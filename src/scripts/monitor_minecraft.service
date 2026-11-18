@@ -1,0 +1,19 @@
+[Unit]
+Description=Minecraft server idle monitor (auto shutdown when empty)
+After=network-online.target minecraft.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+# 监控脚本需要关机权限，以 root 运行；脚本本身不监听任何网络端口
+User=root
+WorkingDirectory=/opt/minecraft/server
+ExecStart=/opt/minecraft/server/monitor
+StandardInput=null
+StandardOutput=journal
+StandardError=journal
+Restart=on-failure
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target

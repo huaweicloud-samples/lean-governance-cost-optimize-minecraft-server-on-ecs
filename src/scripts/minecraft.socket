@@ -1,0 +1,9 @@
+[Unit]
+PartOf=minecraft.service
+
+[Socket]
+# 服务器控制台 FIFO：向该文件写入一行即相当于在游戏控制台执行命令
+ListenFIFO=%t/minecraft.stdin
+
+[Install]
+WantedBy=sockets.target
