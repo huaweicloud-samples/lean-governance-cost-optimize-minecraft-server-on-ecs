@@ -1,0 +1,30 @@
+# ============================================================================
+# 变量示例（复制为 terraform.tfvars 后填入实际值）
+# 注意：请勿将真实凭据提交到代码库
+# ============================================================================
+
+region            = "cn-north-4"
+project_name      = "minecraft-idle-server"
+availability_zone = "cn-north-4a"
+ecs_flavor        = "s6.large.2"
+system_disk_type  = "GPSSD"
+system_disk_size  = 40
+bandwidth_size    = 5
+
+# 允许访问 SSH(22) 与游戏端口(25565) 的源 IP 段；
+# 部署前请改为本机公网 IP 或办公网段，切勿长期保留 0.0.0.0/0
+allowed_cidr = "0.0.0.0/0"
+
+# 弹性云服务器登录口令（敏感项，至少 8 位且含大小写字母与数字）
+admin_password = "ChangeMe_2026!Mc"
+
+# Minecraft 服务器堆内存（MB），需小于实例总内存
+server_ram_mb = 2048
+
+# 全部玩家断开后等待多少秒自动关机（不建议低于 300 秒）
+shutdown_timer_seconds = 900
+
+# 服务端版本锁定：下载地址与 SHA1 校验和（与 server_version 对应）
+server_version  = "1.20.4"
+server_jar_url  = "https://piston-data.mojang.com/v1/objects/8dd1a28015f51b1803213892b50b7b4fc76e594d/server.jar"
+server_jar_sha1 = "8dd1a28015f51b1803213892b50b7b4fc76e594d"

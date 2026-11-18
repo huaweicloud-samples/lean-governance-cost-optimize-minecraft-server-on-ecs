@@ -1,0 +1,22 @@
+[Unit]
+Description=Minecraft Java Server
+Documentation=man:systemd.service(5)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=minecraft
+Group=minecraft
+WorkingDirectory=/opt/minecraft/server
+ExecStart=/opt/minecraft/server/start
+Restart=on-failure
+RestartSec=10
+# 控制台标准输入来自 minecraft.socket 创建的 FIFO（/stop 等命令经此注入）
+Sockets=minecraft.socket
+StandardInput=socket
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
